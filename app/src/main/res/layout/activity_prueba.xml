@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jorgelopez.iotandroid_jl.PruebaActivity">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="170dp"
+        android:layout_height="230dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="182dp"
+        android:layout_height="232dp"
+        android:text="Button"
+        tools:layout_editor_absoluteY="16dp"
+        tools:layout_editor_absoluteX="188dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="170dp"
+        android:layout_height="246dp"
+        android:text="Button"
+        tools:layout_editor_absoluteY="249dp"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="183dp"
+        android:layout_height="244dp"
+        android:text="Button"
+        tools:layout_editor_absoluteY="248dp"
+        tools:layout_editor_absoluteX="188dp" />
+</android.support.constraint.ConstraintLayout>
