@@ -50,9 +50,6 @@ public class ControlActivity extends AppCompatActivity {
 
         String nomUsuario = getIntent().getStringExtra("nomUsuario");
 
-        //Linea para imprimir en consola
-        //Log.i("ControlActivity", nomUsuario);
-
         setTitle("Bienvenido " + nomUsuario);
 
         auth = FirebaseAuth.getInstance();
