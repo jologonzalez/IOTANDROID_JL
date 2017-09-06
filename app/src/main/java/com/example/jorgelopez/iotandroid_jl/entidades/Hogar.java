@@ -6,10 +6,10 @@ package com.example.jorgelopez.iotandroid_jl.entidades;
 
 public class Hogar {
 
-    private int Sala=0;
-    private int Habitacion1=0;
-    private int Habitacion2=0;
-    private int Cocina=0;
+    private int Sala;
+    private int Habitacion1;
+    private int Habitacion2;
+    private int Cocina;
 
     public Hogar(){
 

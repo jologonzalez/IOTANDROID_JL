@@ -1,6 +1,7 @@
 package com.example.jorgelopez.iotandroid_jl;
 
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,8 +9,11 @@ import android.widget.Button;
 
 import com.example.jorgelopez.iotandroid_jl.entidades.Hogar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,6 +61,51 @@ public class ControlActivity extends AppCompatActivity {
 
         reference = database.getReference("Hogar");
 
+        datosHogar();
+
+    }
+
+    private void datosHogar(){
+
+        String Uid = auth.getCurrentUser().getUid();
+
+        reference.child(Uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Hogar hogar = dataSnapshot.getValue(Hogar.class);
+
+                if(hogar.getSala()==1){
+                    btnSala.setBackgroundColor(Color.RED);
+                }else{
+                    btnSala.setBackgroundColor(Color.BLUE);
+                }
+
+                if(hogar.getHabitacion1()==1){
+                    btnHabitacion.setBackgroundColor(Color.RED);
+                }else{
+                    btnHabitacion.setBackgroundColor(Color.BLUE);
+                }
+
+                if(hogar.getHabitacion2()==1){
+                    btnHabitacion2.setBackgroundColor(Color.RED);
+                }else{
+                    btnHabitacion2.setBackgroundColor(Color.BLUE);
+                }
+
+                if(hogar.getCocina()==1){
+                    btnCocina.setBackgroundColor(Color.RED);
+                }else{
+                    btnCocina.setBackgroundColor(Color.BLUE);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @OnClick(R.id.btnSala)
@@ -66,7 +115,7 @@ public class ControlActivity extends AppCompatActivity {
 
         if(objHogar.getSala()==0){
             objHogar.setSala(1);
-            btnSala.setBackgroundColor(Color.RED);
+            btnSala.setBackgroundColor(ContextCompat.getColor(this, R.color.rojo));
         }else if(objHogar.getSala()==1){
             objHogar.setSala(0);
             btnSala.setBackgroundColor(Color.BLUE);
@@ -89,7 +138,7 @@ public class ControlActivity extends AppCompatActivity {
             btnHabitacion.setBackgroundColor(Color.BLUE);
         }
 
-        reference.child(Uid).child("Habitacion 1").setValue(objHogar.getHabitacion1());
+        reference.child(Uid).child("Habitacion1").setValue(objHogar.getHabitacion1());
 
     }
 
@@ -106,7 +155,7 @@ public class ControlActivity extends AppCompatActivity {
             btnHabitacion2.setBackgroundColor(Color.BLUE);
         }
 
-        reference.child(Uid).child("Habitacion 2").setValue(objHogar.getHabitacion2());
+        reference.child(Uid).child("Habitacion2").setValue(objHogar.getHabitacion2());
 
     }
 
